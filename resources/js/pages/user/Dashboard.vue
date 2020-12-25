@@ -18,6 +18,9 @@
         //
       }
     },
+    created(){
+      this.$store.commit('SET_LAYOUT', 'user-layout')
+    },
     components: {
       //
     }

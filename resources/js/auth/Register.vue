@@ -38,14 +38,15 @@
   export default {
     data() {
       return {
-        name: '',
+        name: 'Test String',
         email: '',
         password: '',
         password_confirmation: '',
         has_error: false,
         error: '',
         errors: {},
-        success: false
+        success: false,
+        role_id: 2,
       }
     },
     created(){
@@ -57,15 +58,18 @@
         var app = this
         this.$auth.register({
           data: {
+            name: app.name,
             email: app.email,
             password: app.password,
-            password_confirmation: app.password_confirmation
+            password_confirmation: app.password_confirmation,
+            role_id: app.role_id,
           },
           success: function () {
             app.success = true
-            this.$router.push({name: 'login', params: {successRegistrationRedirect: true}})
+            this.$router.push({name: 'dashboard', params: {successRegistrationRedirect: true}})
           },
           error: function (res) {
+            console.log("Error")
             console.log(res.response.data.errors)
             app.has_error = true
             app.error = res.response.data.error
