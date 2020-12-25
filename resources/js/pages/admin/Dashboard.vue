@@ -24,6 +24,10 @@
     mounted() {
       //
     },
+    created(){
+      this.$store.commit('SET_LAYOUT', 'app-layout')
+    },
+
     components: {
       userList
     }

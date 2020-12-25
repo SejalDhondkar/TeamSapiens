@@ -19,5 +19,9 @@ class RoleSeed extends Seeder
         'title'=>'User',
         'description'=>'User',
       ]);
+      Role::create([
+        'title'=>'Professional',
+        'description'=>'Medical Professional',
+      ]);
     }
 }
