@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="card card-default">
-      <div class="card-header">Inscription</div>
+      <!-- User Registration Page -->
+      <div class="card-header">Register</div>
 
       <div class="card-body">
         <div class="alert alert-danger" v-if="has_error && !success">
@@ -11,24 +12,34 @@
 
         <form autocomplete="off" @submit.prevent="register" v-if="!success" method="post">
 
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" v-model="name" required>
+          </div>
+
           <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.email }">
             <label for="email">E-mail</label>
-            <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email">
+            <input type="email" id="email" class="form-control" v-model="email" required>
             <span class="help-block" v-if="has_error && errors.email">{{ errors.email }}</span>
           </div>
 
+          <div class="form-group">
+            <label for="mobile">Contact Number</label>
+            <input type="text" id="name" class="form-control" v-model="mobile" required>
+          </div>
+
           <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.password }">
-            <label for="password">Mot de passe</label>
+            <label for="password">Password</label>
             <input type="password" id="password" class="form-control" v-model="password">
             <span class="help-block" v-if="has_error && errors.password">{{ errors.password }}</span>
           </div>
 
           <div class="form-group" v-bind:class="{ 'has-error': has_error && errors.password }">
-            <label for="password_confirmation">Confirmation mot de passe</label>
+            <label for="password_confirmation">Confirm Password</label>
             <input type="password" id="password_confirmation" class="form-control" v-model="password_confirmation">
           </div>
 
-          <button type="submit" class="btn btn-default">Inscription</button>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
         </form>
       </div>
     </div>
@@ -38,8 +49,9 @@
   export default {
     data() {
       return {
-        name: 'Test String',
+        name: '',
         email: '',
+        mobile: '',
         password: '',
         password_confirmation: '',
         has_error: false,
@@ -50,6 +62,7 @@
       }
     },
     created(){
+      // Set layout of page as auth-layout (blank)
       this.$store.commit('SET_LAYOUT', 'auth-layout')
     },
 
@@ -60,6 +73,7 @@
           data: {
             name: app.name,
             email: app.email,
+            mobile: app.mobile,
             password: app.password,
             password_confirmation: app.password_confirmation,
             role_id: app.role_id,
