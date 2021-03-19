@@ -8,6 +8,7 @@
 import AppLayout from './layouts/AppLayout'
 import AuthLayout from './layouts/AuthLayout'
 import UserLayout from './layouts/UserLayout'
+import BlankLayout from './layouts/BlankLayout'
 export default {
   computed: {
     layout () {
@@ -17,7 +18,8 @@ export default {
   components: {
     'app-layout': AppLayout,
     'auth-layout': AuthLayout,
-    'user-layout': UserLayout
+    'user-layout': UserLayout,
+    'blank-layout': BlankLayout
     // define as many layouts you want for the application
   }
 }

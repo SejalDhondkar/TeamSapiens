@@ -62,7 +62,7 @@
       }
     },
     created(){
-      // Set layout of page as auth-layout (blank)
+      // Set layout of page as auth-layout
       this.$store.commit('SET_LAYOUT', 'auth-layout')
     },
 

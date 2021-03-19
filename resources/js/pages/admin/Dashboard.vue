@@ -4,12 +4,13 @@
       <div class="card-header">Admin Dashboard</div>
 
       <div class="card-body">
-        Bienvenue sur votre dashboard administrateur
+        Welcome, this is admin dashboard
       </div>
 
     </div>
+    <br><br>
     <div class="card card-default">
-      <div class="card-header">Liste des utilisateurs</div>
+      <div class="card-header">List of Users</div>
 
       <div class="card-body">
         <userList></userList>
