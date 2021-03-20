@@ -10,11 +10,31 @@ import RolesIndex from './roles/Index'
 import RolesCreate from './roles/Create'
 import RolesEdit from './roles/Edit'
 
+import HospitalDataEdit from './pages/user/DataEdit'
+import HospitalList from './HospitalList'
+import DoctorList from './DoctorList'
+
 // Routes
 const routes = [{
         path: '/',
         name: 'home',
         component: Home,
+        meta: {
+            auth: undefined
+        }
+    },
+    {
+        path: '/hospitals',
+        name: 'hospitals',
+        component: HospitalList,
+        meta: {
+            auth: undefined
+        }
+    },
+    {
+        path: '/doctors',
+        name: 'doctors',
+        component: DoctorList,
         meta: {
             auth: undefined
         }
@@ -40,6 +60,14 @@ const routes = [{
         path: '/dashboard',
         name: 'dashboard',
         component: Dashboard,
+        meta: {
+            auth: true
+        }
+    },
+    {
+        path: '/hospital/:id/edit',
+        name: 'user.dataedit',
+        component: HospitalDataEdit,
         meta: {
             auth: true
         }
@@ -77,6 +105,7 @@ const routes = [{
             auth: { roles: 1, redirect: { name: 'login' }, forbiddenRedirect: '/403' }
         }
     },
+
 
 ]
 

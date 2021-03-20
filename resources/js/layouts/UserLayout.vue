@@ -13,6 +13,14 @@
             <v-list-item-title>Dashboard</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item @click="edit">
+          <v-list-item-action>
+            <v-icon>mdi-email</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Edit Details</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item @click.prevent="$auth.logout()">
           <v-list-item-action>
             <v-icon>mdi-email</v-icon>
@@ -30,7 +38,7 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>User</v-toolbar-title>
+      <v-toolbar-title>Hospital Portal</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -65,5 +73,11 @@
     data: () => ({
       drawer: false,
     }),
+    methods: {
+      edit() {
+        this.$route.params.id = this.$auth.user().id;
+        this.$router.push(`/hospital/${this.$route.params.id}/edit`);
+      }
+    }
   }
 </script>

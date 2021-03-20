@@ -24,7 +24,7 @@ class CreateHospitalsTable extends Migration
             $table->integer('total_beds')->nullable();
             $table->integer('vacant_beds')->nullable();
             $table->integer('total_vaccines')->nullable();
-            $table->integer('vacant_vaccines')->nullable();
+            $table->integer('available_vaccines')->nullable();
             $table->timestamps();
         });
     }

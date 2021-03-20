@@ -5,6 +5,14 @@
 
       <v-spacer></v-spacer>
 
+      <v-btn class="ma-2 text-decoration-none" tile outlined color="primary" to="/hospitals">
+        Hospitals List
+      </v-btn>
+
+      <v-btn class="ma-2 text-decoration-none" tile outlined color="primary" to="/doctors">
+        Doctors List
+      </v-btn>
+
       <v-btn v-if="!$auth.check()" class="ma-2 text-decoration-none" tile outlined color="primary" to="/login">
         Log In
       </v-btn>

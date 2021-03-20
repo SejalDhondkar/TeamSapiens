@@ -31,4 +31,19 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('roles/store',['uses'=>'RoleController@store','as'=>'roles.store']);
     Route::get('roles/{id}/edit',['uses'=>'RoleController@edit','as'=>'roles.edit']);
     Route::put('roles/{id}/update',['uses'=>'RoleController@update','as'=>'roles.update']);
+    
+    Route::get('hospital/{id}/edit',['uses'=>'HospitalController@edit','as'=>'hospital.edit']);
+    Route::post('hospital/{id}/update',['uses'=>'HospitalController@editdata','as'=>'roles.editdata']);
+    Route::get('hospital/{id}/add',['uses'=>'HospitalController@add','as'=>'hospital.add']);
+    Route::get('hospital/{id}/subtract',['uses'=>'HospitalController@subtract','as'=>'hospital.subtract']);
+
+    Route::get('hospital/{id}/subtractvac',['uses'=>'HospitalController@subtract_vac','as'=>'hospital.subtract_vac']);
+
+    
+});
+
+Route::group(['middleware' => 'guest'], function(){
+
+    Route::get('/hospital/list',['uses'=>'HospitalController@list','as'=>'hospital.list']);
+    Route::get('/doctor/list',['uses'=>'DoctorController@list','as'=>'doctor.list']);
 });
