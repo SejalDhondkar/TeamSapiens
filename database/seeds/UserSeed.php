@@ -19,10 +19,22 @@ class UserSeed extends Seeder
       ]);
 
       User::create([
-          'name' => 'User',
-          'email' => 'user@test.com',
-          'password' => Hash::make('user'),
+          'name' => 'Hospital 1',
+          'email' => 'hospital1@test.com',
+          'password' => Hash::make('password'),
           'role_id' => 2
-      ]);
+        ]);
+        User::create([
+            'name' => 'Hospital 2',
+            'email' => 'hospital2@test.com',
+            'password' => Hash::make('password'),
+            'role_id' => 2
+        ]);
+        User::create([
+            'name' => 'Hospital 3',
+            'email' => 'hospital3@test.com',
+            'password' => Hash::make('password'),
+            'role_id' => 2
+        ]);
     }
 }

@@ -16,8 +16,8 @@ class RoleSeed extends Seeder
         'description'=>'Admin',
       ]);
       Role::create([
-        'title'=>'User',
-        'description'=>'User',
+        'title'=>'Hospital',
+        'description'=>'Hospital',
       ]);
     }
 }
