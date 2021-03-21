@@ -1,7 +1,5 @@
 ## Website - Team Sapiens
 
-Some info / summary
-
 ## Frameworks
 
 - Laravel 
@@ -29,8 +27,7 @@ Some info / summary
 - `npm run watch` (new terminal)
 - `php artisan serve` (new terminal)
 
-- Login as Admin (admin@test.com:admin)
-- Login as User (user@test.com:user)
+- Login as Hospital (hospital1@test.com: password)
 
 
 
