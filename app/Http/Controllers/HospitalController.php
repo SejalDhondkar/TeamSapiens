@@ -89,5 +89,13 @@ class HospitalController extends Controller
         return $hosp;
     }
 
+    public function view($id)
+    {
+        $hosp = Hospital::where('hosp_id',$id)->first();
+        
+        return $hosp;
+        
+    }
+
 
 }

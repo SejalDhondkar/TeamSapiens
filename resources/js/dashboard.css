@@ -1,111 +1,3 @@
-<template>
-  <div class="container m-0">
-    <div class="topnav">
-            <h3 class="mt-2 ml-2" style="color:white;">Sapiens</h3>
-            <!-- <a href="/register">Register</a> -->
-            <a href="/login">Login</a>
-            <a href="/doctors">Doctors List</a>
-            <a href="/hospitals">Hospitals List</a>
-          </div>
-    <section class="page-content">
-        <section class="grid">
-            <article class="first">
-              <div id="chartContainer2" style="height: 650px; width: 100%;"></div>
-            </article>
-          <article>
-            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-          </article>
-          <article class="vaccine-table">
-            <table>
-                <tr>
-                  <th>Vaccine</th>
-                  <th>Type</th>
-                  <th>Manufacturer</th>
-                  <th>Collaborator</th>
-                  <th>Stage</th>
-                </tr>
-                <tr>
-                  <td>Covidshield</td>
-                  <td>Chimpanzee Adenovirus</td>
-                  <td>Serum Institute, Pune</td>
-                  <td>AstraZeneca</td>
-                  <td>Approved for Emergency Use</td>
-                </tr>
-                <tr>
-                  <td>Covaxin</td>
-                  <td>Inactivated Virus</td>
-                  <td>Bharat Biotech, Hyderabad</td>
-                  <td>ICMR</td>
-                  <td>Approved for Emergency Use</td>
-                </tr>
-                <tr>
-                  <td>ZyCoV-D</td>
-                  <td>DNA Vaccine</td>
-                  <td>Cadila Healthcare, Ahmedabad</td>
-                  <td>Dept of Biotechnology</td>
-                  <td>Phase II</td>
-                </tr>
-                <tr>
-                  <td>Sputnik V</td>
-                  <td>Human Adenovirus vaccine</td>
-                  <td>Dr Reddy's lab, Hyderabad</td>
-                  <td>Gamaleya National Centre, Russia</td>
-                  <td>Phase II over, Phase III to start</td>
-                </tr>
-                <tr>
-                  <td>NVX-Cov2373</td>
-                  <td>Protein Sub-unit</td>
-                  <td>Serum Institute, Pune</td>
-                  <td>Novavax</td>
-                  <td>Phase III under consideration</td>
-                </tr>
-              </table>
-              
-          </article>
-          <article style="display: none; height: 2px;"></article>
-        </section>
-        <footer class="page-footer">
-          <span>made by Team Sapiens</span>
-        </footer>
-      </section>
-  </div>
-</template>
-
-
-<script>
-
-export default {
-  data() {
-    return {
-
-    }
-  },
-  
-    mounted() {
-
-      this.$loadScript("/js/chart1.js");
-      this.$loadScript("/js/dashboard.js");
-
-      this.$loadScript("https://canvasjs.com/assets/script/canvasjs.min.js")
-  
-   },
-  created(){
-    this.$store.commit('SET_LAYOUT', 'blank-layout')
-  },
-  methods: {
-      dashboard() {
-        if (this.$auth.user().role_id === 1) {
-          this.$router.push({ path: '/admin/dashboard' })
-        }
-        if (this.$auth.user().role_id === 2) {
-          this.$router.push({ path: '/dashboard' })
-        }
-      }
-    }
-}
-</script>
-
-<style scoped>
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
 
 :root {
@@ -127,35 +19,6 @@ export default {
   --switch-sunColor: gold;
   --switch-moonColor: #f4f4f4;
   --switch-bgDarkModeColor: #1f1f27;
-}
-
-.topnav {
-  background-color: teal;
-  overflow: hidden;
-  width: 100%;
-  margin: auto;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: right;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
 }
 
 * {
@@ -346,7 +209,7 @@ body {
   /* position: relative; */
   margin: auto;
   /* left: var(--page-header-width); */
-  width: 100%;
+  width: 95%;
   min-height: 100vh;
   padding: 30px;
   color: var(--page-content-txtColor);
@@ -445,7 +308,7 @@ body {
 
 .page-content .grid > article.first{
     /* display: flex; */
-    height: 700px;
+    height: 750px;
     padding: 20px;
     background: var(--page-content-blockColor);
     border-radius: var(--border-radius);
@@ -454,7 +317,7 @@ body {
 
   .page-content .grid > article.vaccine-table{
     /* display: flex; */
-    height: 580px;
+    height: 460px;
     padding: 20px;
     background: var(--page-content-blockColor);
     border-radius: var(--border-radius);
@@ -747,4 +610,3 @@ table {
 .page-footer a {
   margin-left: 4px;
 }
-</style>

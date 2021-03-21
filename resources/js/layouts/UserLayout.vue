@@ -13,6 +13,14 @@
             <v-list-item-title>Dashboard</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-item to="/hospital/patients/list">
+          <v-list-item-action>
+            <v-icon>mdi-home</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Patients List</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item @click="edit">
           <v-list-item-action>
             <v-icon>mdi-email</v-icon>
@@ -34,7 +42,7 @@
 
     <v-app-bar
       app
-      color="indigo"
+      color="teal"
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -57,7 +65,7 @@
       </v-container>
     </v-main>
     <v-footer
-      color="indigo"
+      color="teal"
       app
     >
       <span class="white--text">Sapiens &copy; {{ new Date().getFullYear() }}</span>

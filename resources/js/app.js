@@ -12,6 +12,9 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
 import { store } from './store'
+import LoadScript from 'vue-plugin-load-script';
+
+Vue.use(LoadScript);
 // Set Vue globally
 window.Vue = Vue
 
@@ -29,11 +32,11 @@ Vue.use(VueAuth, auth)
 Vue.component('index', Index)
 
 const app = new Vue({
-  el: '#app',
-  store,
-  router,
-  vuetify: new Vuetify(),
-  icons: {
-    iconfont: 'mdi',
-  },
+    el: '#app',
+    store,
+    router,
+    vuetify: new Vuetify(),
+    icons: {
+        iconfont: 'mdi',
+    },
 });

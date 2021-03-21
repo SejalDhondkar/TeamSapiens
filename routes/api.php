@@ -39,11 +39,15 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     Route::get('hospital/{id}/subtractvac',['uses'=>'HospitalController@subtract_vac','as'=>'hospital.subtract_vac']);
 
+    Route::get('hospital/patients/list',['uses'=>'RequestDataController@list','as'=>'hospital.patientlist']);
+
     
 });
 
 Route::group(['middleware' => 'guest'], function(){
 
     Route::get('/hospital/list',['uses'=>'HospitalController@list','as'=>'hospital.list']);
+    Route::get('/hospital/{id}/view',['uses'=>'HospitalController@view','as'=>'hospital.view']);
     Route::get('/doctor/list',['uses'=>'DoctorController@list','as'=>'doctor.list']);
+    Route::post('hospital/request/store',['uses'=>'RequestDataController@store','as'=>'requestdata.store']);
 });

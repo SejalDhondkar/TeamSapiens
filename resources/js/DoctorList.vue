@@ -1,31 +1,31 @@
 <template>
   <v-app>
-    <v-app-bar app color="white">
-      Sapiens
+    <v-app-bar app color="teal">
+      <h3 style="color:white;" @click="home">Sapiens</h3>
 
       <v-spacer></v-spacer>
 
-      <v-btn class="ma-2 text-decoration-none" tile outlined color="primary" to="/hospitals">
+      <v-btn class="ma-2 text-decoration-none" tile outlined color="white" to="/hospitals">
         Hospitals List
       </v-btn>
 
-      <v-btn class="ma-2 text-decoration-none" tile outlined color="primary" to="/doctors">
+      <v-btn class="ma-2 text-decoration-none" tile outlined color="white" to="/doctors">
         Doctors List
       </v-btn>
 
-      <v-btn v-if="!$auth.check()" class="ma-2 text-decoration-none" tile outlined color="primary" to="/login">
+      <v-btn v-if="!$auth.check()" class="ma-2 text-decoration-none" tile outlined color="white" to="/login">
         Log In
       </v-btn>
 
-      <v-btn v-if="!$auth.check()" class="ma-2 text-decoration-none" tile outlined color="primary" to="/register">
+      <!-- <v-btn v-if="!$auth.check()" class="ma-2 text-decoration-none" tile outlined color="white" to="/register">
         Register
-      </v-btn>
+      </v-btn> -->
 
-      <v-btn v-if="$auth.check()" class="ma-2 text-decoration-none" tile outlined color="primary" @click="dashboard()">
+      <v-btn v-if="$auth.check()" class="ma-2 text-decoration-none" tile outlined color="white" @click="dashboard()">
         Go to Dashboard
       </v-btn>
 
-      <v-btn v-if="$auth.check()" class="ma-2 text-decoration-none" tile color="primary" @click.prevent="$auth.logout()">
+      <v-btn v-if="$auth.check()" class="ma-2 text-decoration-none" tile color="white" @click.prevent="$auth.logout()">
         Log Out
       </v-btn>
 
@@ -76,6 +76,9 @@ export default {
     this.$store.commit('SET_LAYOUT', 'blank-layout')
   },
   methods: {
+    home() {
+      this.$router.push({ path: '/' })
+    },
       dashboard() {
         if (this.$auth.user().role_id === 1) {
           this.$router.push({ path: '/admin/dashboard' })
@@ -108,6 +111,10 @@ table {
   font-size: 18px; /* Increase font-size */
 }
 
+th{
+  background-color: #ff99b4;
+}
+
  th, td {
   text-align: left; /* Left-align text */
   padding: 12px; /* Add padding */
@@ -117,6 +124,7 @@ table {
   /* Add a bottom border to all table rows */
   border-bottom: 1px solid #ddd;
 }
+tr:nth-child(even){background-color: #ccccff;}
 
  tr.header,  tr:hover {
   /* Add a grey background color to the table header and on hover */

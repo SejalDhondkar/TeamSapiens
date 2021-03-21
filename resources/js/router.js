@@ -12,7 +12,10 @@ import RolesEdit from './roles/Edit'
 
 import HospitalDataEdit from './pages/user/DataEdit'
 import HospitalList from './HospitalList'
+import HospitalView from './HospitalView'
 import DoctorList from './DoctorList'
+
+import HospitalPatientList from './pages/user/Patients'
 
 // Routes
 const routes = [{
@@ -27,6 +30,14 @@ const routes = [{
         path: '/hospitals',
         name: 'hospitals',
         component: HospitalList,
+        meta: {
+            auth: undefined
+        }
+    },
+    {
+        path: '/hospital/:id/view',
+        name: 'hospital.view',
+        component: HospitalView,
         meta: {
             auth: undefined
         }
@@ -68,6 +79,14 @@ const routes = [{
         path: '/hospital/:id/edit',
         name: 'user.dataedit',
         component: HospitalDataEdit,
+        meta: {
+            auth: true
+        }
+    },
+    {
+        path: '/hospital/patients/list',
+        name: 'hospital.patientlist',
+        component: HospitalPatientList,
         meta: {
             auth: true
         }

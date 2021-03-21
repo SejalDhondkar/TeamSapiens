@@ -34,7 +34,7 @@
             <input type="password" id="password_confirmation" class="form-control" v-model="password_confirmation">
           </div>
 
-          <button type="submit" class="btn btn-primary">Sign Up</button>
+          <button type="submit" class="btn">Sign Up</button>
         </form>
       </div>
     </div>
@@ -87,3 +87,10 @@
     }
   }
 </script>
+
+<style scoped>
+.btn {
+  background-color: teal;
+  color: white;
+}
+</style>

@@ -1,31 +1,31 @@
 <template>
   <v-app>
-    <v-app-bar app color="white">
-      Sapiens
+    <v-app-bar app color="teal">
+      <h3 style="color:white;" @click="home">Sapiens</h3>
 
       <v-spacer></v-spacer>
 
-      <v-btn class="ma-2 text-decoration-none" tile outlined color="primary" to="/hospitals">
+      <v-btn class="ma-2 text-decoration-none" tile outlined color="white" to="/hospitals">
         Hospitals List
       </v-btn>
 
-      <v-btn class="ma-2 text-decoration-none" tile outlined color="primary" to="/doctors">
+      <v-btn class="ma-2 text-decoration-none" tile outlined color="white" to="/doctors">
         Doctors List
       </v-btn>
 
-      <v-btn v-if="!$auth.check()" class="ma-2 text-decoration-none" tile outlined color="primary" to="/login">
+      <v-btn v-if="!$auth.check()" class="ma-2 text-decoration-none" tile outlined color="white" to="/login">
         Log In
       </v-btn>
 
-      <v-btn v-if="!$auth.check()" class="ma-2 text-decoration-none" tile outlined color="primary" to="/register">
+      <!-- <v-btn v-if="!$auth.check()" class="ma-2 text-decoration-none" tile outlined color="white" to="/register">
         Register
-      </v-btn>
+      </v-btn> -->
 
-      <v-btn v-if="$auth.check()" class="ma-2 text-decoration-none" tile outlined color="primary" @click="dashboard()">
+      <v-btn v-if="$auth.check()" class="ma-2 text-decoration-none" tile outlined color="white" @click="dashboard()">
         Go to Dashboard
       </v-btn>
 
-      <v-btn v-if="$auth.check()" class="ma-2 text-decoration-none" tile color="primary" @click.prevent="$auth.logout()">
+      <v-btn v-if="$auth.check()" class="ma-2 text-decoration-none" tile color="white" @click.prevent="$auth.logout()">
         Log Out
       </v-btn>
 
@@ -47,6 +47,7 @@
                 <th scope="col">Total Beds</th>
                 <th scope="col">Available Vaccines</th>
                 <th scope="col">Location</th>
+                <th scope="col">Action</th>
             </tr>
             <tr v-for="hosp in hospitals" v-bind:key="hosp.id" style="margin-bottom: 5px;">
                 <th scope="row">{{ hosp.name }}</th>
@@ -54,28 +55,29 @@
                 <td>{{ hosp.total_beds }}</td>
                 <td>{{ hosp.available_vaccines}}</td>
                 <td>{{ hosp.area}}</td>
+                <td><v-btn class="ma-2 text-decoration-none" tile outlined color="black" @click="viewhosp(hosp)">View Details</v-btn></td>
             </tr>
             </table>
         </div>
         </div>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
             <div class="card m-4">
             <div class="card-body">
               <h3>Filter</h3>
                 <br><br>
                 <input type="text" id="myInput" @change="myFunction()" placeholder="Search for names..">
-                <!-- <form autocomplete="off" @submit.prevent="submit" method="post">
+                <form autocomplete="off" @submit.prevent="submit" method="post">
                     <div class="form-group">
                         <label for="name">Enter Hospital Name</label>
                         <input type="name" id="name" class="form-control" v-model="data.name" required>
                     </div>
                     <button type="submit" class="btn btn-success">Save Changes</button>
-                </form> -->
+                </form>
                 
             </div>
           </div>
-        </div>
+        </div> -->
         </div>
     </v-container>
   </v-app>
@@ -97,7 +99,9 @@ export default {
     this.$store.commit('SET_LAYOUT', 'blank-layout')
   },
   methods: {
-    
+    home() {
+      this.$router.push({ path: '/' })
+    },
       dashboard() {
         if (this.$auth.user().role_id === 1) {
           this.$router.push({ path: '/admin/dashboard' })
@@ -106,6 +110,10 @@ export default {
           this.$router.push({ path: '/dashboard' })
         }
       },
+      viewhosp(h){
+        this.$route.params.id = h.hosp_id;
+        this.$router.push(`/hospital/${this.$route.params.id}/view`);
+      },
       getHosp() {
         this.$http({
           url: `/hospital/list`,
@@ -113,7 +121,7 @@ export default {
         })
           .then((res) => {
             this.hospitals = res.data;
-            console.log(this.hospitals)
+            // console.log(this.hospitals)
           }, () => {
             this.has_error = true
           })
@@ -140,6 +148,11 @@ table {
   font-size: 18px; /* Increase font-size */
 }
 
+  th{
+    background-color: teal;
+    
+  }
+
  th, td {
   text-align: left; /* Left-align text */
   padding: 12px; /* Add padding */
@@ -149,6 +162,8 @@ table {
   /* Add a bottom border to all table rows */
   border-bottom: 1px solid #ddd;
 }
+
+tr:nth-child(even){background-color: #7fffd4;}
 
  tr.header,  tr:hover {
   /* Add a grey background color to the table header and on hover */
